@@ -1,0 +1,45 @@
+﻿@model List<PracticeWebApplication.Models.MappingClass>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*/<th>
+
+             @Html.DisplayNameFor(mo=>mo.Select(a=>a.Course.CourseName))
+            </th><>
+            <th
+               @Html.DisplayNameFor(mo=>mo.Select(a=>a.Subject.SubjectName))
+            </th>*@
+        <th></th>
+    </tr>
+    @*foreach (var item in Model)
+    {
+        <li id="@("item-"+item.Subject.SubjectName + "item_"+item.Subject.SubjectName)" class="ui-state-default"></li>
+    }
+    *@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MappingId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MappingId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MappingId })
+            </td>
+        </tr>
+    }
+
+</table>

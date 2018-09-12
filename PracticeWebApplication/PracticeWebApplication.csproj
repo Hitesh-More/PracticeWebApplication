@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -54,6 +57,10 @@
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -200,9 +207,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MappingClassesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\StudentDatasController.cs" />
+    <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TeacherDatasController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,10 +243,163 @@
     <Compile Include="Migrations\201809061423020_ManageViewModels2.Designer.cs">
       <DependentUpon>201809061423020_ManageViewModels2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809071403130_AccountViewModels2.cs" />
+    <Compile Include="Migrations\201809071403130_AccountViewModels2.Designer.cs">
+      <DependentUpon>201809071403130_AccountViewModels2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809071449197_CourseClass.cs" />
+    <Compile Include="Migrations\201809071449197_CourseClass.Designer.cs">
+      <DependentUpon>201809071449197_CourseClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809071449414_SubjectClass.cs" />
+    <Compile Include="Migrations\201809071449414_SubjectClass.Designer.cs">
+      <DependentUpon>201809071449414_SubjectClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809071450082_StudentDataClass.cs" />
+    <Compile Include="Migrations\201809071450082_StudentDataClass.Designer.cs">
+      <DependentUpon>201809071450082_StudentDataClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809071450295_TeacherDataClass.cs" />
+    <Compile Include="Migrations\201809071450295_TeacherDataClass.Designer.cs">
+      <DependentUpon>201809071450295_TeacherDataClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809071451007_IdentityModels.cs" />
+    <Compile Include="Migrations\201809071451007_IdentityModels.Designer.cs">
+      <DependentUpon>201809071451007_IdentityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100534036_CourseClass1.cs" />
+    <Compile Include="Migrations\201809100534036_CourseClass1.Designer.cs">
+      <DependentUpon>201809100534036_CourseClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100535315_SubjectClass1.cs" />
+    <Compile Include="Migrations\201809100535315_SubjectClass1.Designer.cs">
+      <DependentUpon>201809100535315_SubjectClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100536171_StudentDataClass1.cs" />
+    <Compile Include="Migrations\201809100536171_StudentDataClass1.Designer.cs">
+      <DependentUpon>201809100536171_StudentDataClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100536596_TeacherDataClass1.cs" />
+    <Compile Include="Migrations\201809100536596_TeacherDataClass1.Designer.cs">
+      <DependentUpon>201809100536596_TeacherDataClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100626242_SubjectClass2.cs" />
+    <Compile Include="Migrations\201809100626242_SubjectClass2.Designer.cs">
+      <DependentUpon>201809100626242_SubjectClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100627108_CourseClass2.cs" />
+    <Compile Include="Migrations\201809100627108_CourseClass2.Designer.cs">
+      <DependentUpon>201809100627108_CourseClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100627298_TeacherDataClass2.cs" />
+    <Compile Include="Migrations\201809100627298_TeacherDataClass2.Designer.cs">
+      <DependentUpon>201809100627298_TeacherDataClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100627462_StudentDataClass2.cs" />
+    <Compile Include="Migrations\201809100627462_StudentDataClass2.Designer.cs">
+      <DependentUpon>201809100627462_StudentDataClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100629009_IdentityModels1.cs" />
+    <Compile Include="Migrations\201809100629009_IdentityModels1.Designer.cs">
+      <DependentUpon>201809100629009_IdentityModels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100642364_SubjectClass3.cs" />
+    <Compile Include="Migrations\201809100642364_SubjectClass3.Designer.cs">
+      <DependentUpon>201809100642364_SubjectClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100642544_CourseClass3.cs" />
+    <Compile Include="Migrations\201809100642544_CourseClass3.Designer.cs">
+      <DependentUpon>201809100642544_CourseClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100643212_TeacherDataClass3.cs" />
+    <Compile Include="Migrations\201809100643212_TeacherDataClass3.Designer.cs">
+      <DependentUpon>201809100643212_TeacherDataClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100643544_StudentDataClass3.cs" />
+    <Compile Include="Migrations\201809100643544_StudentDataClass3.Designer.cs">
+      <DependentUpon>201809100643544_StudentDataClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100644564_IdnetityModels.cs" />
+    <Compile Include="Migrations\201809100644564_IdnetityModels.Designer.cs">
+      <DependentUpon>201809100644564_IdnetityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100655194_CourseClass4.cs" />
+    <Compile Include="Migrations\201809100655194_CourseClass4.Designer.cs">
+      <DependentUpon>201809100655194_CourseClass4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100709203_CourseClass5.cs" />
+    <Compile Include="Migrations\201809100709203_CourseClass5.Designer.cs">
+      <DependentUpon>201809100709203_CourseClass5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100709571_Course.cs" />
+    <Compile Include="Migrations\201809100709571_Course.Designer.cs">
+      <DependentUpon>201809100709571_Course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100725493_Subject.cs" />
+    <Compile Include="Migrations\201809100725493_Subject.Designer.cs">
+      <DependentUpon>201809100725493_Subject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100726143_TeacherData.cs" />
+    <Compile Include="Migrations\201809100726143_TeacherData.Designer.cs">
+      <DependentUpon>201809100726143_TeacherData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100726320_StudentData.cs" />
+    <Compile Include="Migrations\201809100726320_StudentData.Designer.cs">
+      <DependentUpon>201809100726320_StudentData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100840113_AddedNewTables.cs" />
+    <Compile Include="Migrations\201809100840113_AddedNewTables.Designer.cs">
+      <DependentUpon>201809100840113_AddedNewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101231014_Course1.cs" />
+    <Compile Include="Migrations\201809101231014_Course1.Designer.cs">
+      <DependentUpon>201809101231014_Course1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110713382_ChangeInMappingClass.cs" />
+    <Compile Include="Migrations\201809110713382_ChangeInMappingClass.Designer.cs">
+      <DependentUpon>201809110713382_ChangeInMappingClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110732337_ChangeInMappingClass1.cs" />
+    <Compile Include="Migrations\201809110732337_ChangeInMappingClass1.Designer.cs">
+      <DependentUpon>201809110732337_ChangeInMappingClass1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110733424_ChangeInMappingClass2.cs" />
+    <Compile Include="Migrations\201809110733424_ChangeInMappingClass2.Designer.cs">
+      <DependentUpon>201809110733424_ChangeInMappingClass2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110735053_ChangeInMappingClass3.cs" />
+    <Compile Include="Migrations\201809110735053_ChangeInMappingClass3.Designer.cs">
+      <DependentUpon>201809110735053_ChangeInMappingClass3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110826580_mappingclasswitharray.cs" />
+    <Compile Include="Migrations\201809110826580_mappingclasswitharray.Designer.cs">
+      <DependentUpon>201809110826580_mappingclasswitharray.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110913015_changedatabase.cs" />
+    <Compile Include="Migrations\201809110913015_changedatabase.Designer.cs">
+      <DependentUpon>201809110913015_changedatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809110954227_final.cs" />
+    <Compile Include="Migrations\201809110954227_final.Designer.cs">
+      <DependentUpon>201809110954227_final.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809111002204_final1.cs" />
+    <Compile Include="Migrations\201809111002204_final1.Designer.cs">
+      <DependentUpon>201809111002204_final1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809120537024_final2.cs" />
+    <Compile Include="Migrations\201809120537024_final2.Designer.cs">
+      <DependentUpon>201809120537024_final2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MappingClass.cs" />
+    <Compile Include="Models\TeacherData.cs" />
+    <Compile Include="Models\StudentData.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -247,6 +412,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Img.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -301,6 +467,33 @@
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Role\Create.cshtml" />
     <Content Include="Views\Shared\_AdminPartial.cshtml" />
+    <Content Include="Views\Shared\_FrontPartial.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Subjects\Create.cshtml" />
+    <Content Include="Views\Subjects\Delete.cshtml" />
+    <Content Include="Views\Subjects\Details.cshtml" />
+    <Content Include="Views\Subjects\Edit.cshtml" />
+    <Content Include="Views\Subjects\Index.cshtml" />
+    <Content Include="Views\StudentDatas\Create.cshtml" />
+    <Content Include="Views\StudentDatas\Delete.cshtml" />
+    <Content Include="Views\StudentDatas\Details.cshtml" />
+    <Content Include="Views\StudentDatas\Edit.cshtml" />
+    <Content Include="Views\StudentDatas\Index.cshtml" />
+    <Content Include="Views\TeacherDatas\Create.cshtml" />
+    <Content Include="Views\TeacherDatas\Delete.cshtml" />
+    <Content Include="Views\TeacherDatas\Details.cshtml" />
+    <Content Include="Views\TeacherDatas\Edit.cshtml" />
+    <Content Include="Views\TeacherDatas\Index.cshtml" />
+    <Content Include="Views\MappingClasses\Create.cshtml" />
+    <Content Include="Views\MappingClasses\Delete.cshtml" />
+    <Content Include="Views\MappingClasses\Details.cshtml" />
+    <Content Include="Views\MappingClasses\Edit.cshtml" />
+    <Content Include="Views\MappingClasses\Index.cshtml" />
+    <Content Include="Views\MappingClasses\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +530,120 @@
     <EmbeddedResource Include="Migrations\201809061423020_ManageViewModels2.resx">
       <DependentUpon>201809061423020_ManageViewModels2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071403130_AccountViewModels2.resx">
+      <DependentUpon>201809071403130_AccountViewModels2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071449197_CourseClass.resx">
+      <DependentUpon>201809071449197_CourseClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071449414_SubjectClass.resx">
+      <DependentUpon>201809071449414_SubjectClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071450082_StudentDataClass.resx">
+      <DependentUpon>201809071450082_StudentDataClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071450295_TeacherDataClass.resx">
+      <DependentUpon>201809071450295_TeacherDataClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071451007_IdentityModels.resx">
+      <DependentUpon>201809071451007_IdentityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100534036_CourseClass1.resx">
+      <DependentUpon>201809100534036_CourseClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100535315_SubjectClass1.resx">
+      <DependentUpon>201809100535315_SubjectClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100536171_StudentDataClass1.resx">
+      <DependentUpon>201809100536171_StudentDataClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100536596_TeacherDataClass1.resx">
+      <DependentUpon>201809100536596_TeacherDataClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100626242_SubjectClass2.resx">
+      <DependentUpon>201809100626242_SubjectClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100627108_CourseClass2.resx">
+      <DependentUpon>201809100627108_CourseClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100627298_TeacherDataClass2.resx">
+      <DependentUpon>201809100627298_TeacherDataClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100627462_StudentDataClass2.resx">
+      <DependentUpon>201809100627462_StudentDataClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100629009_IdentityModels1.resx">
+      <DependentUpon>201809100629009_IdentityModels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100642364_SubjectClass3.resx">
+      <DependentUpon>201809100642364_SubjectClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100642544_CourseClass3.resx">
+      <DependentUpon>201809100642544_CourseClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100643212_TeacherDataClass3.resx">
+      <DependentUpon>201809100643212_TeacherDataClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100643544_StudentDataClass3.resx">
+      <DependentUpon>201809100643544_StudentDataClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100644564_IdnetityModels.resx">
+      <DependentUpon>201809100644564_IdnetityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100655194_CourseClass4.resx">
+      <DependentUpon>201809100655194_CourseClass4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100709203_CourseClass5.resx">
+      <DependentUpon>201809100709203_CourseClass5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100709571_Course.resx">
+      <DependentUpon>201809100709571_Course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100725493_Subject.resx">
+      <DependentUpon>201809100725493_Subject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100726143_TeacherData.resx">
+      <DependentUpon>201809100726143_TeacherData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100726320_StudentData.resx">
+      <DependentUpon>201809100726320_StudentData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100840113_AddedNewTables.resx">
+      <DependentUpon>201809100840113_AddedNewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101231014_Course1.resx">
+      <DependentUpon>201809101231014_Course1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110713382_ChangeInMappingClass.resx">
+      <DependentUpon>201809110713382_ChangeInMappingClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110732337_ChangeInMappingClass1.resx">
+      <DependentUpon>201809110732337_ChangeInMappingClass1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110733424_ChangeInMappingClass2.resx">
+      <DependentUpon>201809110733424_ChangeInMappingClass2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110735053_ChangeInMappingClass3.resx">
+      <DependentUpon>201809110735053_ChangeInMappingClass3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110826580_mappingclasswitharray.resx">
+      <DependentUpon>201809110826580_mappingclasswitharray.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110913015_changedatabase.resx">
+      <DependentUpon>201809110913015_changedatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809110954227_final.resx">
+      <DependentUpon>201809110954227_final.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111002204_final1.resx">
+      <DependentUpon>201809111002204_final1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809120537024_final2.resx">
+      <DependentUpon>201809120537024_final2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

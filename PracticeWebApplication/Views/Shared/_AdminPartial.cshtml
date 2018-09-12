@@ -1,43 +1,42 @@
 ﻿@using Microsoft.AspNet.Identity
-@{ 
+@{
     if (Request.IsAuthenticated)
     {
         if (User.Identity.Name == "Admin")
         {
             //using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
             {
-            @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-            <ul class="nav navbar-nav navbar-left">
-                <li>
-                    @Html.ActionLink("Register new User", "Register", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-              
-            </ul>
-                }
-            }
-        }
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        @Html.ActionLink("Register new User", "Register", "Account", routeValues: null, htmlAttributes: new { title = "Register" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Map Subjects", "Index", "MappingClasses", routeValues: null, htmlAttributes: new { title = "Course" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Subject", "Index", "Subjects", routeValues: null, htmlAttributes: new { title = "Course" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Course", "Index", "Courses")
+                    </li>
+
+                </ul>
+                
+                    }
+                    /* <body>
+                        <div>
+                            <h1>@Html.ActionLink("Subject", "Index", "Subjects")</h1>
+                        </div>
+                        <div>
+                            <h1>  @Html.ActionLink("Course", "Index", "Courses")</h1>
+                        </div>
+                    </body>*/
 
 
+                    }
 
-        /* using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-        {
-            @Html.AntiForgeryToken()
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                </li>
-                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-            </ul>
-        }*/
-    }
-@*else
-    {
-        <ul class="nav navbar-nav navbar-right">
-            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-        </ul>
-    }
-    *@
+                    }
+                    }
 

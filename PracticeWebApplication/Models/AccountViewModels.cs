@@ -88,12 +88,9 @@ namespace PracticeWebApplication.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-        [Display(Name = "Department")]
-        public string DepartmentName { get; set; }
-        [Display(Name = "Course")]
-        public string CourseName { get; set; }
-       
 
+        [Display(Name = "UserPhoto")]
+        public byte[] UserPhoto { get; set; }
 
     }
 
@@ -126,30 +123,7 @@ namespace PracticeWebApplication.Models
         public string Email { get; set; }
     }
 
-    public class StudentDataViewModel
-    {
-        [Table("TblStudentData")]
-        public class Employee
-        {
-            [Key]
-            public int EmpId { get; set; }
-            [Required()]
-            [StringLength(100, MinimumLength = 4)]
-            public string Name { get; set; }
-            [Required()]
-            [StringLength(200, MinimumLength = 10)]
-
-            public string Address { get; set; }
-            [Required()]
-            [StringLength(200, MinimumLength = 5)]
-            public string Email { get; set; }
-            [Required()]
-            [StringLength(10, MinimumLength = 10)]
-
-            public string MobileNo { get; set; }
-
-        }
-    }
+   
    
 }
 

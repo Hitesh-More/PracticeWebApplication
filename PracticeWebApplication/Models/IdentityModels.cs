@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -16,6 +17,8 @@ namespace PracticeWebApplication.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public byte[] UserPhoto { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -25,9 +28,18 @@ namespace PracticeWebApplication.Models
         {
         }
 
+        public System.Data.Entity.DbSet<TeacherData> TeacherData { get; set; }
+        public System.Data.Entity.DbSet<Course> Course { get; set; }
+        public System.Data.Entity.DbSet<StudentData> StudentData { get; set; }
+        public System.Data.Entity.DbSet<Subject> Subject { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
+             
             return new ApplicationDbContext();
         }
-    }
+
+        public System.Data.Entity.DbSet<PracticeWebApplication.Models.MappingClass> MappingClasses { get; set; }
+    }   
 }

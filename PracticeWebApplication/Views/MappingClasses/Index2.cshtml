@@ -1,0 +1,33 @@
+﻿@model IEnumerable<PracticeWebApplication.Models.MappingClass>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubjectName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject.SubjectName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MappingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MappingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MappingId })
+        </td>
+    </tr>
+}
+
+</table>
